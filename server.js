@@ -4,9 +4,10 @@ import cors from "cors";
 import fileUpload from "express-fileupload";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
+import useRouter from "./routes/userRouter.js";
 
 // Dotenv config
-dotenv.config();
+dotenv.config({ path: ".env.local" });
 
 // Create an express app
 const app = express();
@@ -33,6 +34,8 @@ mongoose
 app.get("/", (req, res) => {
    res.json("Hello World");
 });
+
+app.use("/user", useRouter);
 
 // Listening
 const PORT = process.env.PORT || 5000;
