@@ -4,7 +4,8 @@ import cors from "cors";
 import fileUpload from "express-fileupload";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
-import useRouter from "./routes/userRouter.js";
+import userRouter from "./routes/userRouter.js";
+import categoryRouter from "./routes/categoryRouter.js";
 
 // Dotenv config
 dotenv.config({ path: ".env.local" });
@@ -35,7 +36,8 @@ app.get("/", (req, res) => {
    res.json("Hello World");
 });
 
-app.use("/user", useRouter);
+app.use("/user", userRouter);
+app.use("/api", categoryRouter);
 
 // Listening
 const PORT = process.env.PORT || 5000;
