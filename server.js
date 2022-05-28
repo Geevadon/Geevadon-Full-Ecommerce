@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import userRouter from "./routes/userRouter.js";
 import categoryRouter from "./routes/categoryRouter.js";
+import uploadRouter from "./routes/uploadRouter.js";
 
 // Dotenv config
 dotenv.config({ path: ".env.local" });
@@ -33,11 +34,12 @@ mongoose
 
 // Routes
 app.get("/", (req, res) => {
-   res.json("Hello World");
+   res.json("Geevadon Full Ecommerce API");
 });
 
 app.use("/user", userRouter);
 app.use("/api", categoryRouter);
+app.use("/api", uploadRouter);
 
 // Listening
 const PORT = process.env.PORT || 5000;

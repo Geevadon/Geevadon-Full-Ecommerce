@@ -1,5 +1,8 @@
 node_modules/
 
+*.local.js
+tmp/
+
 .pnp/
 .pnp.js
 
