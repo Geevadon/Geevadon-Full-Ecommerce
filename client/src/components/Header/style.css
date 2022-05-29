@@ -1,5 +1,60 @@
-.header-container {
-    width: 100%;
-    min-height: 70px;
-    border-bottom: 1px solid #ddd;
+header {
+   width: 100%;
+   min-height: 70px;
+   border-bottom: 1px solid #ddd;
+   overflow: hidden;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 1rem;
+}
+
+header .logo a {
+    /* flex: 1; */
+    color: #000;
+}
+
+header a {
+    color: #555;
+   text-transform: uppercase;
+}
+
+header .right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+header ul {
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+}
+
+header ul li {
+    opacity: 0.7;
+}
+
+header ul li:hover {
+    opacity: 1;
+ }
+
+.menu {
+   display: none;
+}
+
+.cart-box {
+    position: relative;
+    margin-right: 1rem;
+}
+
+.cart-box span {
+    background-color: crimson;
+    color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    padding: 2px 5px;
+    font-size: 10px;
 }
