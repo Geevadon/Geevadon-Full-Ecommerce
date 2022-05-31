@@ -8,8 +8,6 @@ const Products = () => {
 
    const [products] = context.ProductAPI.products;
 
-   console.log("@@@ ===> FROM CONTEXT", products);
-
    return (
       <div className="product-container">
          {products.map((product) => (

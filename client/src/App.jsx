@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
+import ProductDetail from "./components/ProductDetail/ProductDetail";
 import { DataProvider } from "./GlobalState";
 import Cart from "./pages/Cart/Cart";
 import Login from "./pages/Login/Login";
@@ -18,6 +19,7 @@ const App = () => {
                   <Route path="/cart" element={<Cart />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
+                  <Route path="/detail/:id" element={<ProductDetail />} />
                   <Route path="*" element={<NotFound />} />
                </Routes>
             </div>
