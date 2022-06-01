@@ -8,7 +8,8 @@ const Products = () => {
    const context = useContext(GlobalState);
 
    const [products] = context.ProductAPI.products;
-   const [isAdmin] = context.UserAPI.isAdmin;
+
+   const [cart] = context.UserAPI.cart;
 
    return (
       <>
@@ -17,11 +18,7 @@ const Products = () => {
          ) : (
             <div className="product-container">
                {products.map((product) => (
-                  <ProductItem
-                     key={product._id}
-                     product={product}
-                     isAdmin={isAdmin}
-                  />
+                  <ProductItem key={product._id} product={product} />
                ))}
             </div>
          )}

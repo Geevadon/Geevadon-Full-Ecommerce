@@ -1,5 +1,5 @@
 import "./style.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MenuIcon from "./icons/menu.svg";
 import CloseIcon from "./icons/close.svg";
 import CartIcon from "./icons/cart.svg";
@@ -9,9 +9,9 @@ import axios from "axios";
 
 const Header = () => {
    const context = useContext(GlobalState);
-   const [isLogged, setIsLogged] = context.UserAPI.isLogged;
-   const [isAdmin, setIsAdmin] = context.UserAPI.isAdmin;
-   const navigate = useNavigate();
+   const [isLogged] = context.UserAPI.isLogged;
+   const [isAdmin] = context.UserAPI.isAdmin;
+   const [cart] = context.UserAPI.cart;
 
    const logoutHandler = async () => {
       try {
@@ -19,10 +19,7 @@ const Header = () => {
 
          localStorage.removeItem("firstLogin");
 
-         setIsLogged(false);
-         setIsAdmin(false);
-
-         navigate("/login");
+         window.location.href = "/";
       } catch (err) {
          alert(err.reponse.data.msg);
       }
@@ -91,7 +88,7 @@ const Header = () => {
 
             {!isAdmin && (
                <div className="cart-box">
-                  <span>0</span>
+                  <span>{cart.length}</span>
                   <Link to="/cart">
                      <img src={CartIcon} alt="" width="30" />
                   </Link>

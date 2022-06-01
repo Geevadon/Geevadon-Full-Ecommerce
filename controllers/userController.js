@@ -136,6 +136,28 @@ const userController = {
          return res.status(500).json({ msg: err.message });
       }
    },
+
+   // Add to cart
+   addToCart: async (req, res) => {
+      try {
+         const user = await User.findById(req.user.id);
+
+         if (!user) {
+            return res.status(400).json({ msg: "User doesn't exist." });
+         }
+
+         await User.findOneAndUpdate(
+            { _id: req.user.id },
+            {
+               cart: req.body.cart,
+            }
+         );
+
+         return res.json({ msg: "Added to cart successfully." });
+      } catch (err) {
+         return res.status(500).json({ msg: err.message });
+      }
+   },
 };
 
 const createAccessToken = (user) => {

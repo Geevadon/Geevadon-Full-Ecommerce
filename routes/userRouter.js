@@ -9,5 +9,6 @@ router.post("/login", userController.login);
 router.get("/logout", userController.logout);
 router.get("/refresh_token", userController.refreshToken);
 router.get("/me", auth, userController.me);
+router.post("/addtocart", auth, userController.addToCart);
 
 export default router;

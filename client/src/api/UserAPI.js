@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 const UserAPI = (token) => {
    const [isLogged, setIsLogged] = useState(false);
    const [isAdmin, setIsAdmin] = useState(false);
+   const [cart, setCart] = useState([]);
 
    const getUser = async () => {
       try {
@@ -16,10 +17,40 @@ const UserAPI = (token) => {
          // set isLogged to true
          setIsLogged(true);
 
+         // set the cart
+         setCart(res.data.cart);
+
          // set isAdmin to true if the role is 1.
          res.data.role === 1 && setIsAdmin(true);
       } catch (err) {
          alert(err.response.data.msg);
+      }
+   };
+
+   const addToCart = async (product) => {
+      if (!isLogged) {
+         return alert("Please login to continue buying.");
+      }
+
+      // Make sure the same product is not added multiple times in the cart. It has to be added just once.
+      const check = cart.every((item) => {
+         return item._id !== product._id;
+      });
+
+      if (check) {
+         setCart([...cart, { ...product, quantity: 1 }]);
+
+         await axios.post(
+            "/user/addtocart",
+            { cart: [...cart, { ...product, quantity: 1 }] },
+            {
+               headers: {
+                  Authorization: token,
+               },
+            }
+         );
+      } else {
+         alert("This product has already been added to cart.");
       }
    };
 
@@ -32,6 +63,8 @@ const UserAPI = (token) => {
    return {
       isLogged: [isLogged, setIsLogged],
       isAdmin: [isAdmin, setIsAdmin],
+      cart: [cart, setCart],
+      addToCart: addToCart,
    };
 };
 

@@ -1,7 +1,14 @@
 import "./style.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { GlobalState } from "../../GlobalState";
 
-const ProductItem = ({ product, isAdmin }) => {
+const ProductItem = ({ product }) => {
+   const context = useContext(GlobalState);
+
+   const [isAdmin] = context.UserAPI.isAdmin;
+   const addToCart = context.UserAPI.addToCart;
+
    return (
       <div className="product-card">
          {isAdmin && <input type="checkbox" checked={product.checked}></input>}
@@ -25,7 +32,11 @@ const ProductItem = ({ product, isAdmin }) => {
                   </>
                ) : (
                   <>
-                     <Link to="#" className="btn-buy">
+                     <Link
+                        to="#"
+                        className="btn-buy"
+                        onClick={() => addToCart(product)}
+                     >
                         Buy
                      </Link>
                      <Link to={`/detail/${product._id}`} className="btn-view">
