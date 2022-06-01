@@ -2,6 +2,7 @@ import "./style.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { GlobalState } from "../../GlobalState";
+import { textSubstring } from "../../utils";
 
 const ProductItem = ({ product }) => {
    const context = useContext(GlobalState);
@@ -18,7 +19,7 @@ const ProductItem = ({ product }) => {
          <div className="product-details">
             <h2>{product.title}</h2>
             <span>${product.price}</span>
-            <p>{product.description}</p>
+            <p>{textSubstring(product.description, 105)}</p>
 
             <div className="btn-container">
                {isAdmin ? (

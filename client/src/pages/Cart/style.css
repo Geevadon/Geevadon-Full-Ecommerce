@@ -57,6 +57,7 @@
 }
 
 .cart .total h3 {
+   font-size: 1.1rem;
    font-weight: 400;
    color: #323232;
 }

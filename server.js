@@ -8,6 +8,7 @@ import userRouter from "./routes/userRouter.js";
 import categoryRouter from "./routes/categoryRouter.js";
 import uploadRouter from "./routes/uploadRouter.js";
 import productRouter from "./routes/productRouter.js";
+import paymentRouter from "./routes/paymentRouter.js";
 
 // Dotenv config
 dotenv.config({ path: ".env.local" });
@@ -42,6 +43,7 @@ app.use("/user", userRouter);
 app.use("/api", categoryRouter);
 app.use("/api", uploadRouter);
 app.use("/api", productRouter);
+app.use("/api", paymentRouter);
 
 // Listening
 const PORT = process.env.PORT || 5000;
