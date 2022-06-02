@@ -1,0 +1,44 @@
+.history {
+   width: 100%;
+}
+
+.history h2 {
+   font-size: 1.7rem;
+   font-weight: 300;
+   color: #323232;
+   text-align: center;
+   margin-top: 0.5rem;
+   margin-bottom: 1rem;
+}
+
+.history h3 {
+   font-size: 1rem;
+   font-weight: 300;
+   color: #323232;
+   margin-bottom: 0.25rem;
+}
+
+.history .table-container {
+   overflow: auto;
+}
+
+.history table {
+   width: 100%;
+   border-collapse: collapse;
+   font-weight: 300;
+   white-space: nowrap;
+}
+
+.history table th {
+   text-align: left;
+}
+
+.history td,
+.history th {
+   padding: 0.45rem;
+   border: 1px solid #ccc;
+}
+
+.history a {
+   color: crimson;
+}

@@ -1,5 +1,5 @@
 {
-  "name": "mern_full_ecommerce_backend",
+  "name": "geevadon_full_ecommerce_backend",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -8,7 +8,7 @@
     "dev": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Geevadon",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",

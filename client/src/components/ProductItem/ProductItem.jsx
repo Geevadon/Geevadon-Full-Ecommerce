@@ -19,7 +19,7 @@ const ProductItem = ({ product }) => {
          <div className="product-details">
             <h2>{product.title}</h2>
             <span>${product.price}</span>
-            <p>{textSubstring(product.description, 105)}</p>
+            <p>{textSubstring(product.description, 90)}</p>
 
             <div className="btn-container">
                {isAdmin ? (

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { GlobalState } from "../../GlobalState";
-import ProductItem from "../ProductItem/ProductItem";
+import ProductItem from "../../components/ProductItem/ProductItem";
 import "./style.css";
 
 const ProductDetail = () => {
@@ -9,6 +9,7 @@ const ProductDetail = () => {
    const params = useParams();
    const [products] = context.ProductAPI.products;
    const [productDetail, setProductDetail] = useState({});
+   const addToCart = context.UserAPI.addToCart;
 
    useEffect(() => {
       if (params.id) {
@@ -29,14 +30,18 @@ const ProductDetail = () => {
             <div className="box">
                <div className="row">
                   <h2>{productDetail.title}</h2>
-                  <small>#id: {productDetail.productId}</small>
+                  <small>#ID: {productDetail.productId}</small>
                </div>
 
                <span>${productDetail.price}</span>
                <p>{productDetail.description}</p>
                <p>{productDetail.content}</p>
                <p>Sold: {productDetail.sold}</p>
-               <Link to="/cart" className="btn-cart">
+               <Link
+                  to="/cart"
+                  className="btn-cart"
+                  onClick={() => addToCart(productDetail)}
+               >
                   Buy Now
                </Link>
             </div>
@@ -51,7 +56,8 @@ const ProductDetail = () => {
                      return product.category === productDetail.category ? (
                         <ProductItem key={product._id} product={product} />
                      ) : null;
-                  })}
+                  })
+                  .slice(0, 6)}
             </div>
          </div>
       </>

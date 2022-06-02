@@ -8,6 +8,9 @@ const Cart = () => {
    const context = useContext(GlobalState);
    const [token] = context.token;
    const [cart, setCart] = context.UserAPI.cart;
+   const [callback, setCallback] = context.UserAPI.callback;
+   const [productCallback, setProductCallback] =
+      context.ProductAPI.productCallback;
    const [total, setTotal] = useState(0);
 
    // calculate the cart total amount
@@ -20,7 +23,7 @@ const Cart = () => {
    };
 
    // add to cart
-   const addToCart = async () => {
+   const addToCart = async (cart) => {
       await axios.post(
          "/user/addtocart",
          { cart },
@@ -41,7 +44,7 @@ const Cart = () => {
       });
 
       setCart([...cart]);
-      addToCart();
+      addToCart(cart);
    };
 
    // decrement the cart item quantity
@@ -53,7 +56,7 @@ const Cart = () => {
       });
 
       setCart([...cart]);
-      addToCart();
+      addToCart(cart);
    };
 
    // remove the product from the cart
@@ -66,14 +69,30 @@ const Cart = () => {
          });
 
          setCart([...cart]);
-         addToCart();
+         addToCart(cart);
       }
    };
 
    // Paypal Success Handler
    const successHandler = async (payment) => {
-      console.log("@@@@ ==> PAYPAL SUCCESS", payment);
-   }
+      const { paymentID, address } = payment;
+
+      await axios.post(
+         "/api/payment",
+         { cart, paymentId: paymentID, address },
+         {
+            headers: {
+               Authorization: token,
+            },
+         }
+      );
+
+      setCart([]);
+      addToCart([]);
+      setCallback(!callback);
+      setProductCallback(!productCallback);
+      alert("You have successfully placed an order.");
+   };
 
    // useEffect
    useEffect(() => {
@@ -88,44 +107,55 @@ const Cart = () => {
             <div className="details">
                <h2>Shopping Cart</h2>
 
-               <table>
-                  <tbody>
-                     {cart.map((item) => (
-                        <tr key={item._id}>
-                           <td>
-                              <button onClick={() => removeCartItem(item._id)}>
-                                 X
-                              </button>
-                           </td>
-                           <td>
-                              <img src={item.images[0]} alt={item.title} />
-                           </td>
-                           <td>{item.title}</td>
-                           <td>
-                              <div className="amount">
+               <div className="table-container">
+                  <table>
+                     <tbody>
+                        {cart.map((item) => (
+                           <tr key={item._id}>
+                              <td>
                                  <button
-                                    onClick={() => decrementQuantity(item._id)}
+                                    onClick={() => removeCartItem(item._id)}
                                  >
-                                    -
+                                    X
                                  </button>
-                                 <span>{item.quantity}</span>
-                                 <button
-                                    onClick={() => incrementQuantity(item._id)}
-                                 >
-                                    +
-                                 </button>
-                              </div>
-                           </td>
-                           <td>${item.price * item.quantity}</td>
-                        </tr>
-                     ))}
-                  </tbody>
-               </table>
+                              </td>
+                              <td>
+                                 <img src={item.images[0]} alt={item.title} />
+                              </td>
+                              <td>{item.title}</td>
+                              <td>
+                                 <div className="amount">
+                                    <button
+                                       onClick={() =>
+                                          decrementQuantity(item._id)
+                                       }
+                                    >
+                                       -
+                                    </button>
+                                    <span>{item.quantity}</span>
+                                    <button
+                                       onClick={() =>
+                                          incrementQuantity(item._id)
+                                       }
+                                    >
+                                       +
+                                    </button>
+                                 </div>
+                              </td>
+                              <td>${item.price * item.quantity}</td>
+                           </tr>
+                        ))}
+                     </tbody>
+                  </table>
+               </div>
 
                <div className="total">
                   <h3>Total: ${total}</h3>
                   <span>
-                     <PayPalButton total={total} successHandler={successHandler}/>
+                     <PayPalButton
+                        total={total}
+                        successHandler={successHandler}
+                     />
                   </span>
                </div>
             </div>

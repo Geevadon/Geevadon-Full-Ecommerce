@@ -36,6 +36,10 @@
     line-height: .9;
  }
 
+ .detail small {
+     text-transform: uppercase;
+ }
+
  .detail span {
      color: crimson;
  }

@@ -1,0 +1,57 @@
+.details-container {
+   width: 100%;
+}
+
+.details-container h2 {
+   font-size: 1.7rem;
+   font-weight: 300;
+   color: #323232;
+   text-align: center;
+   margin-top: 0.5rem;
+   margin-bottom: 1rem;
+}
+
+.details-container h3 {
+   font-size: 1rem;
+   font-weight: 300;
+   color: #323232;
+   margin-bottom: 0.25rem;
+}
+
+.details-container .table-container {
+   overflow: auto;
+}
+
+.details-container table {
+   width: 100%;
+   border-collapse: collapse;
+   font-weight: 300;
+   white-space: nowrap;
+}
+
+.details-container table th {
+   text-align: left;
+}
+
+.details-container td,
+.details-container th {
+   padding: 0.45rem;
+   border: 1px solid #ccc;
+}
+
+.details-container a {
+   color: crimson;
+}
+
+.product-table {
+   margin-top: 2rem;
+   text-transform: capitalize;
+}
+
+.product-table img {
+   width: 60px;
+   height: 60px;
+   object-fit: cover;
+   border-radius: 0.25rem;
+   margin-top: 0.35rem;
+}

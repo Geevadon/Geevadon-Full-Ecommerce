@@ -3,6 +3,7 @@ import axios from "axios";
 
 const ProductAPI = () => {
    const [products, setProducts] = useState([]);
+   const [productCallback, setProductCallback] = useState(false); // to refresh the product list when the state value changes
 
    const getProducts = async () => {
       const response = await axios.get("/api/products");
@@ -12,10 +13,11 @@ const ProductAPI = () => {
 
    useEffect(() => {
       getProducts();
-   }, []);
+   }, [productCallback]);
 
    return {
       products: [products, setProducts],
+      productCallback: [productCallback, setProductCallback],
    };
 };
 

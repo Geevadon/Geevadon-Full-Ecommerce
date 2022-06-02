@@ -26,6 +26,10 @@ const paymentController = {
          const { cart, paymentId, address } = req.body;
          const { _id, name, email } = user;
 
+         cart.filter((item) => {
+            return sold(item._id, item.quantity);
+         });
+
          const createdPayment = await Payment.create({
             userId: _id,
             name,
@@ -35,11 +39,23 @@ const paymentController = {
             cart,
          });
 
-         res.json(createdPayment);
+         res.json({ msg: "Created successfully." });
       } catch (err) {
          return res.status(500).json({ msg: err.message });
       }
    },
+};
+
+// Update the product sold property
+const sold = async (id, quantity) => {
+   const product = await Product.findById(id);
+
+   await Product.findByIdAndUpdate(
+      { _id: id },
+      {
+         sold: quantity + product.sold,
+      }
+   );
 };
 
 export default paymentController;

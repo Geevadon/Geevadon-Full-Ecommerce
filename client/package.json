@@ -1,7 +1,7 @@
 {
-   "name": "client",
-   "version": "0.1.0",
-   "private": true,
+   "name": "geevadon_full_ecommerce_frontend",
+   "author": "Geevadon",
+   "version": "1.0.0",
    "proxy": "http://localhost:5000",
    "dependencies": {
       "@testing-library/jest-dom": "^5.16.4",

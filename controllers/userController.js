@@ -1,4 +1,5 @@
 import User from "../models/userModel.js";
+import Payment from "../models/paymentModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -158,6 +159,17 @@ const userController = {
          return res.status(500).json({ msg: err.message });
       }
    },
+
+   // Get user history
+   history: async (req, res) => {
+      try {
+         const history = await Payment.find({ userId: req.user.id });
+
+         return res.json(history);
+      } catch (err) {
+         return res.status(500).json({ msg: err.message })
+      }
+   }
 };
 
 const createAccessToken = (user) => {
