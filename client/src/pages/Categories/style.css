@@ -1,0 +1,84 @@
+.categories {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   gap: 2rem;
+   margin: auto;
+   margin-top: 1rem;
+}
+
+.categories .col2 {
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   overflow: auto;
+   max-height: 80vh;
+}
+
+.categories form {
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+}
+
+.categories form input {
+   border: 1px solid #ccc;
+   padding: 0.25rem 0.5rem;
+   border-radius: 0.25rem;
+   outline: none;
+   font-size: 1rem;
+}
+
+.categories form button {
+   order: 1px solid #555;
+   outline: none;
+   background-color: #555;
+   color: #fff;
+   padding: 0.25rem 0.75rem;
+   border-radius: 0.25rem;
+   font-size: 1rem;
+   opacity: 0.95;
+}
+
+.categories form button:hover {
+   opacity: 1;
+}
+
+.categories .category-box {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 2rem;
+   white-space: nowrap;
+   border: 1px solid #ccc;
+   padding: 0.5rem 1rem;
+   border-radius: 0.25rem;
+}
+
+.categories .actions {
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+}
+
+.categories .actions button {
+   order: 1px solid #555;
+   outline: none;
+   color: #fff;
+   padding: 2px 0.75rem;
+   border-radius: 0.25rem;
+   font-size: 1rem;
+   opacity: 0.95;
+}
+
+.categories .actions button:hover {
+   opacity: 1;
+}
+
+.categories .actions .btn-edit {
+   background-color: #555;
+}
+
+.categories .actions .btn-delete {
+   background-color: crimson;
+}
