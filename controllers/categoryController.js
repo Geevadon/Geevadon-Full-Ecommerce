@@ -23,9 +23,9 @@ const categoryController = {
                .json({ msg: "This category already exists." });
          }
 
-         const createdCategory = await Category.create({ name });
+         await Category.create({ name });
 
-         return res.json(createdCategory);
+         return res.json({ msg: "Created successfully." });
       } catch (err) {
          return res.status(500).json({ msg: err.message });
       }
@@ -47,7 +47,7 @@ const categoryController = {
 
          await Category.findOneAndUpdate({ _id: req.params.id }, { name });
 
-         return res.json({ msg: "Update successfully." });
+         return res.json({ msg: "Updated successfully." });
       } catch (err) {
          return res.status(500).json({ msg: err.message });
       }

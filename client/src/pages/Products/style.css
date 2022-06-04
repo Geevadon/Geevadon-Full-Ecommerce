@@ -8,3 +8,53 @@
    gap: 1.5rem;
    row-gap: 2rem;
 }
+
+.error {
+   width: 100%;
+   padding-top: 2rem;
+}
+
+.error h2 {
+   color: #555;
+   font-weight: 300;
+   text-align: center;
+}
+
+.delete-all {
+   width: 100%;
+   padding-top: 1rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.delete-all .select {
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+}
+
+.delete-all input {
+   width: 15px;
+   height: 15px;
+}
+
+.delete-all label,
+.delete-all button {
+   text-transform: uppercase;
+   font-size: 1rem;
+   color: #555;
+}
+
+.delete-all button {
+   padding: 0.25rem 1.5rem;
+   text-align: center;
+   color: #fff;
+   background-color: crimson;
+   border-radius: 0.25rem;
+   opacity: 0.90;
+}
+
+.delete-all button:hover {
+   opacity: 1;
+}

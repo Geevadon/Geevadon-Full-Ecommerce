@@ -1,5 +1,6 @@
 .product-card {
    max-width: 300px;
+   height: min-content;
    border-radius: 0.5rem;
    box-shadow: 0 0 15px #ddd;
 }
@@ -15,7 +16,7 @@
    padding-bottom: 0.75rem;
    display: flex;
    flex-direction: column;
-   justify-content: center;
+   justify-content: space-between;
    gap: 0.25rem;
 }
 
@@ -29,6 +30,10 @@
    margin: 0;
    cursor: pointer;
    text-transform: capitalize;
+}
+
+.product-card .product-details p {
+   height: 5rem;
 }
 
 .product-card span {

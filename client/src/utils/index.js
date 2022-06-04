@@ -4,3 +4,7 @@ export const textSubstring = (text, max = 200) => {
 
    return newText + threeDots;
 };
+
+export const getPublicId = (url) => {
+   return `${url?.split("/")[7]}/${url?.split("/")[8]?.split(".")[0]}`;
+};

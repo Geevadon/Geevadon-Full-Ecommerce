@@ -59,15 +59,15 @@ const uploadController = {
 
    delete: async (req, res) => {
       try {
-         const { public_id } = req.body;
+         const { publicId } = req.body;
 
-         if (!public_id) {
+         if (!publicId) {
             return res
                .status(400)
                .json({ msg: "Please supply the image to delete." });
          }
 
-         cloudinary.v2.uploader.destroy(public_id, async (err, result) => {
+         cloudinary.v2.uploader.destroy(publicId, async (err, result) => {
             if (err) throw err;
 
             return res.json({ msg: "Image deleted successfully." });

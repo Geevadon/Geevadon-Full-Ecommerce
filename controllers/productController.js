@@ -87,11 +87,11 @@ const productController = {
             category,
          } = req.body;
 
-         if (!images) {
-            return res
-               .status(400)
-               .json({ msg: "Please supply at least one image." });
-         }
+         // if (!images) {
+         //    return res
+         //       .status(400)
+         //       .json({ msg: "Please supply at least one image." });
+         // }
 
          const product = await Product.findOne({ productId });
 

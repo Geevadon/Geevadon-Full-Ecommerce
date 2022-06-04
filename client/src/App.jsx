@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import { GlobalState } from "./GlobalState";
 import Cart from "./pages/Cart/Cart";
 import Categories from "./pages/Categories/Categories";
+import CreateProduct from "./pages/CreateProduct/CreateProduct";
 import Login from "./pages/Login/Login";
 import NotFound from "./pages/NotFound/NotFound";
 import OrderDetail from "./pages/OrderDetail/OrderDetail";
@@ -44,6 +45,14 @@ const App = () => {
                <Route
                   path="/categories/"
                   element={isAdmin ? <Categories /> : <NotFound />}
+               />
+               <Route
+                  path="/create-product/"
+                  element={isAdmin ? <CreateProduct /> : <NotFound />}
+               />
+               <Route
+                  path="/edit-product/:id"
+                  element={isAdmin ? <CreateProduct /> : <NotFound />}
                />
                <Route path="*" element={<NotFound />} />
             </Routes>

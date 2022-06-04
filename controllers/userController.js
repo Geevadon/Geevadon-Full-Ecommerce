@@ -43,6 +43,7 @@ const userController = {
          res.cookie("refreshtoken", refreshToken, {
             httpOnly: true,
             path: "/user/refresh_token",
+            maxAge: 1000 * 60 * 60 * 24 * 7
          });
 
          return res.status(200).json({ accessToken });
@@ -77,6 +78,7 @@ const userController = {
          res.cookie("refreshtoken", refreshToken, {
             httpOnly: true,
             path: "/user/refresh_token",
+            maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
          });
 
          return res.status(200).json({ accessToken });
@@ -167,13 +169,13 @@ const userController = {
 
          return res.json(history);
       } catch (err) {
-         return res.status(500).json({ msg: err.message })
+         return res.status(500).json({ msg: err.message });
       }
-   }
+   },
 };
 
 const createAccessToken = (user) => {
-   return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1d" });
+   return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "11m" });
 };
 
 const createRefreshToken = (user) => {
