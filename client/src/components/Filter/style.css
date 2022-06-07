@@ -1,0 +1,49 @@
+.container {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   gap: 1rem;
+   padding: 0.5rem 0;
+   font-size: 13px;
+   color: #555;
+}
+
+.container .left {
+   display: flex;
+   flex-direction: column;
+   gap: 0.5rem;
+}
+
+.container .search {
+   display: flex;
+   gap: 0.5rem;
+}
+
+.container input,
+select {
+   padding: 2px 5px;
+   outline: none;
+   border: 1px solid #ccc;
+   border-radius: 0.25rem;
+   background-color: transparent;
+   height: min-content;
+}
+
+.container span {
+    font-size: 14.5px;
+}
+
+.container input {
+   padding: 5px 10px;
+}
+
+.container .search button {
+   border: none;
+   padding: 0.35rem 1rem;
+   text-align: center;
+   color: #fff;
+   border-radius: 0.25rem;
+   opacity: 0.95;
+   background-color: #555;
+   height: min-content;
+}

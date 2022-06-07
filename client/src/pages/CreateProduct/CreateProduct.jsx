@@ -4,7 +4,6 @@ import { GlobalState } from "../../GlobalState";
 import imgBg from "./img/image.png";
 import { useNavigate, useParams } from "react-router-dom";
 import "./style.css";
-import { getPublicId } from "../../utils";
 
 const initialProductState = {
    productId: "",

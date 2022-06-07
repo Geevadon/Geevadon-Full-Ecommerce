@@ -1,4 +1,5 @@
 import Category from "../models/categoryModel.js";
+import Product from "../models/productModel.js";
 
 const categoryController = {
    getCategories: async (req, res) => {
@@ -33,6 +34,14 @@ const categoryController = {
 
    deleteCategory: async (req, res) => {
       try {
+         const product = await Product.findOne({ category: req.params.id });
+
+         if (product) {
+            return res.status(400).json({
+               msg: "Please delete all the products that belong to this category first.",
+            });
+         }
+
          await Category.findByIdAndDelete(req.params.id);
 
          return res.json({ msg: "Deleted successfully." });

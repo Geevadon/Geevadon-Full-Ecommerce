@@ -1,9 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import Spinner from "../../components/Spinner/Spinner";
 import ProductItem from "../../components/ProductItem/ProductItem";
 import { GlobalState } from "../../GlobalState";
 import "./style.css";
 import axios from "axios";
+import Filter from "../../components/Filter/Filter";
+import LoadMore from "../../components/LoadMore/LoadMore";
 
 const Products = () => {
    const context = useContext(GlobalState);
@@ -84,6 +86,7 @@ const Products = () => {
             <Spinner />
          ) : (
             <>
+               <Filter />
                {products.length === 0 ? (
                   <div className="error">
                      <h2>No product to display.</h2>
@@ -111,6 +114,8 @@ const Products = () => {
                            <ProductItem key={product._id} product={product} />
                         ))}
                      </div>
+
+                     <LoadMore/>
                   </>
                )}
             </>
