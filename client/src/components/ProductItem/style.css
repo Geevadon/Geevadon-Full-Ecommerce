@@ -1,8 +1,14 @@
 .product-card {
-   max-width: 300px;
+   /* max-width: 300px; */
    height: min-content;
    border-radius: 0.5rem;
    box-shadow: 0 0 15px #ddd;
+}
+
+@media (max-width: 515px) {
+   .product-card {
+      max-width: 100%;
+   }
 }
 
 .product-card img {

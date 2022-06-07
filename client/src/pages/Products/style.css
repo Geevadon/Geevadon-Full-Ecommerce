@@ -9,6 +9,24 @@
    row-gap: 2rem;
 }
 
+@media (max-width: 1024px) {
+   .product-container {
+      grid-template-columns: repeat(3, 1fr);
+   }
+}
+
+@media (max-width: 768px) {
+   .product-container {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+@media (max-width: 515px) {
+   .product-container {
+      grid-template-columns: 1fr;
+   }
+}
+
 .error {
    width: 100%;
    padding-top: 2rem;
@@ -52,7 +70,7 @@
    color: #fff;
    background-color: crimson;
    border-radius: 0.25rem;
-   opacity: 0.90;
+   opacity: 0.9;
 }
 
 .delete-all button:hover {

@@ -1,51 +1,68 @@
 .register {
-    width: 40%;
-    margin: auto;
- }
- 
- .register h2 {
-    text-transform: uppercase;
-    text-align: center;
-    margin: 1rem 0;
- }
- 
- .register form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
- }
- 
- .register input {
-    width: 100%;
-    padding: 0.5rem 0.5rem;
-    border-radius: 0.25rem;
-    border: 1px solid #ccc;
-    outline: none;
-    font-size: 1rem;
- }
- 
- .register .row {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
- }
- 
- .register .row button {
-    width: 100%;
-    background-color: crimson;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    font-size: 1rem;
-    opacity: 0.95;
- }
- 
- .register .row button:hover {
-    opacity: 1;
- }
- 
- .register .row a {
-    color: #555;
-    text-decoration: underline;
- }
- 
+   width: 40%;
+   margin: auto;
+}
+
+@media (max-width: 768px) {
+   .register {
+      width: 60%;
+   }
+}
+
+@media (max-width: 425px) {
+   .register {
+      width: 80%;
+   }
+}
+
+@media (max-width: 320px) {
+   .register {
+      width: 100%;
+   }
+}
+
+.register h2 {
+   text-transform: uppercase;
+   text-align: center;
+   margin: 1rem 0;
+}
+
+.register form {
+   display: flex;
+   flex-direction: column;
+   gap: 0.75rem;
+}
+
+.register input {
+   width: 100%;
+   padding: 0.5rem 0.5rem;
+   border-radius: 0.25rem;
+   border: 1px solid #ccc;
+   outline: none;
+   font-size: 1rem;
+}
+
+.register .row {
+   display: flex;
+   flex-direction: column;
+   gap: 0.5rem;
+}
+
+.register .row button {
+   width: 100%;
+   background-color: crimson;
+   color: #fff;
+   padding: 0.5rem 1rem;
+   border-radius: 0.25rem;
+   font-size: 1rem;
+   opacity: 0.95;
+}
+
+.register .row button:hover {
+   opacity: 1;
+}
+
+.register .row a {
+   color: #555;
+   text-decoration: underline;
+}

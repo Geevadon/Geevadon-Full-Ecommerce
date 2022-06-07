@@ -8,6 +8,13 @@
    color: #555;
 }
 
+@media (max-width: 768px) {
+   .container {
+      flex-direction: column;
+      align-items: center;
+   }
+}
+
 .container .left {
    display: flex;
    flex-direction: column;
@@ -35,6 +42,12 @@ select {
 
 .container input {
    padding: 5px 10px;
+}
+
+@media (max-width: 768px) {
+   .container input {
+      width: 200px;
+   }
 }
 
 .container .search button {

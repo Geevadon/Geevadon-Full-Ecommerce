@@ -6,6 +6,13 @@
    gap: 2rem;
 }
 
+@media (max-width: 768px) {
+   .detail {
+      flex-direction: column;
+      align-items: center;
+   }
+}
+
 .detail img {
    max-width: 400px;
    width: 100%;
@@ -15,68 +22,82 @@
 }
 
 .detail .box {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: .25rem;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 0.25rem;
 }
 
 .detail .row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: .25rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 1rem;
+   margin-bottom: 0.25rem;
 }
 
 .detail h2 {
-    font-weight: 600;
-    color: #555;
-    text-transform: uppercase;
-    line-height: .9;
- }
+   font-weight: 600;
+   color: #555;
+   text-transform: uppercase;
+   line-height: 0.9;
+   white-space: nowrap;
+}
 
- .detail small {
-     text-transform: uppercase;
- }
+.detail small {
+   text-transform: uppercase;
+   white-space: nowrap;
+}
 
- .detail span {
-     color: crimson;
- }
+.detail span {
+   color: crimson;
+}
 
- .detail p {
-     color: #555;
-     font-weight: 400;
- }
+.detail p {
+   color: #555;
+   font-weight: 400;
+}
 
- .detail .btn-cart {
-     color: #fff;
-     background-color: #333;
-     padding: .5rem 1.5rem;
-     text-transform: uppercase;
-     width: max-content;
-     margin-top: .75rem;
-     opacity: 0.95;
-     border-radius: 0.25rem;
-     white-space: nowrap;
-     letter-spacing: 2px;
- }
+.detail .btn-cart {
+   color: #fff;
+   background-color: #333;
+   padding: 0.5rem 1.5rem;
+   text-transform: uppercase;
+   width: max-content;
+   margin-top: 0.75rem;
+   opacity: 0.95;
+   border-radius: 0.25rem;
+   white-space: nowrap;
+   letter-spacing: 2px;
+}
 
- .detail .btn-cart:hover {
-     opacity: 1;
- }
+.detail .btn-cart:hover {
+   opacity: 1;
+}
 
- .related {
-     margin-top: 3rem;
- }
+.related {
+   margin-top: 3rem;
+}
 
- .related h2 {
-     color: #333;
-     margin-bottom: 1rem;
- }
+.related h2 {
+   color: #333;
+   margin-bottom: 1rem;
+}
 
- .related .products {
-     display: grid;
-     grid-template-columns: repeat(3, 1fr);
-     gap: 1rem;
+.related .products {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 1rem;
+}
+
+@media (max-width: 768px) {
+   .related .products {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+@media (max-width: 525px) {
+    .related .products {
+       grid-template-columns: 1fr;
+    }
  }

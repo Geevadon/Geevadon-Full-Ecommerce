@@ -120,7 +120,7 @@ const Cart = () => {
                                  </button>
                               </td>
                               <td>
-                                 <img src={item.images[0]} alt={item.title} />
+                                 <img src={item.images.url} alt={item.title} />
                               </td>
                               <td>{item.title}</td>
                               <td>

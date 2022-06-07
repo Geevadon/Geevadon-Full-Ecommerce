@@ -7,6 +7,16 @@
    margin-top: 1rem;
 }
 
+@media (max-width: 768px) {
+   .categories {
+      flex-direction: column;
+   }
+
+   .col1 input {
+      width: 100%;
+   }
+}
+
 .categories .col2 {
    display: flex;
    flex-direction: column;

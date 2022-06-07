@@ -1,9 +1,9 @@
 import "./style.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import MenuIcon from "./icons/menu.svg";
 import CloseIcon from "./icons/close.svg";
 import CartIcon from "./icons/cart.svg";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalState } from "../../GlobalState";
 import axios from "axios";
 
@@ -12,6 +12,9 @@ const Header = () => {
    const [isLogged] = context.UserAPI.isLogged;
    const [isAdmin] = context.UserAPI.isAdmin;
    const [cart] = context.UserAPI.cart;
+   const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+   const location = useLocation();
 
    const logoutHandler = async () => {
       try {
@@ -53,11 +56,49 @@ const Header = () => {
       );
    };
 
+   const toggleMobileMenu = () => {
+      setShowMobileMenu(!showMobileMenu);
+   };
+
+   useEffect(() => {
+      setShowMobileMenu(false);
+   }, [location]);
+
    return (
       <header>
-         <div className="menu">
-            <img src={MenuIcon} alt="" width="30" />
+         <div
+            className="mobile-menu"
+            style={{ left: showMobileMenu ? 0 : "-100%" }}
+         >
+            <img
+               src={CloseIcon}
+               className="close-icon"
+               width="30"
+               onClick={toggleMobileMenu}
+            />
+            <ul>
+               <li>
+                  <Link to="/">{isAdmin ? "Products" : "Shop"}</Link>
+               </li>
+
+               {isAdmin && <AdminLinks />}
+
+               {isLogged ? (
+                  <LoggedLinks />
+               ) : (
+                  <li>
+                     <Link to="/login">Login | Register</Link>
+                  </li>
+               )}
+            </ul>
          </div>
+
+         <img
+            src={MenuIcon}
+            className="menu-icon"
+            width="30"
+            onClick={toggleMobileMenu}
+         />
 
          <div className="logo">
             <Link to="/">
@@ -80,21 +121,16 @@ const Header = () => {
                      <Link to="/login">Login | Register</Link>
                   </li>
                )}
-
-               <li className="menu">
-                  <img src={CloseIcon} alt="" width="30" />
-               </li>
             </ul>
-
-            {!isAdmin && (
-               <div className="cart-box">
-                  <span>{cart.length}</span>
-                  <Link to="/cart">
-                     <img src={CartIcon} alt="" width="30" />
-                  </Link>
-               </div>
-            )}
          </div>
+         {!isAdmin && (
+            <div className="cart-box">
+               <span>{cart.length}</span>
+               <Link to="/cart">
+                  <img src={CartIcon} alt="" width="30" />
+               </Link>
+            </div>
+         )}
       </header>
    );
 };

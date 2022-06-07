@@ -3,6 +3,24 @@
    margin: auto;
 }
 
+@media(max-width: 768px) {
+   .login {
+      width: 60%;
+   }
+}
+
+@media(max-width: 425px) {
+   .login {
+      width: 80%;
+   }
+}
+
+@media(max-width: 320px) {
+   .login {
+      width: 100%;
+   }
+}
+
 .login h2 {
    text-transform: uppercase;
    text-align: center;
