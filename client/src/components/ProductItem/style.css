@@ -1,5 +1,6 @@
 .product-card {
    /* max-width: 300px; */
+   min-width: 25%;
    height: min-content;
    border-radius: 0.5rem;
    box-shadow: 0 0 15px #ddd;

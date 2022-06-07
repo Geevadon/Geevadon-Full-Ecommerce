@@ -9,6 +9,7 @@ import categoryRouter from "./routes/categoryRouter.js";
 import uploadRouter from "./routes/uploadRouter.js";
 import productRouter from "./routes/productRouter.js";
 import paymentRouter from "./routes/paymentRouter.js";
+import path from "path";
 
 // Dotenv config
 dotenv.config({ path: ".env.local" });
@@ -35,15 +36,18 @@ mongoose
    .catch((e) => console.log(`MongoDB Error: ${e}`));
 
 // Routes
-app.get("/", (req, res) => {
-   res.json("Geevadon Full Ecommerce API");
-});
-
 app.use("/user", userRouter);
 app.use("/api", categoryRouter);
 app.use("/api", uploadRouter);
 app.use("/api", productRouter);
 app.use("/api", paymentRouter);
+
+if (process.env.NODE_ENV === "production") {
+   app.use(express.static("client/build"));
+   app.get("*", (req, res) => {
+      res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+   });
+}
 
 // Listening
 const PORT = process.env.PORT || 5000;

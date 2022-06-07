@@ -59,7 +59,7 @@ const OrderDetail = () => {
                   {orderDetails.cart.map((item) => (
                      <tr key={item._id}>
                         <td>
-                           <img src={item.images[0]} alt={item.title} />
+                           <img src={item.images.url} alt={item.title} />
                         </td>
                         <td>{item.title}</td>
                         <td>{item.quantity}</td>
